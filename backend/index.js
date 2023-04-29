@@ -6,7 +6,6 @@ const { connection } = require("./db");
 const { adminRouter } = require("./routes/Admin.route");
 const { auth } = require("./middlewares/auth");
 require("dotenv").config();
-const PORT = process.env.PORT;
 
 /* ------ Middlewares ------ */
 app.use(express.json());
@@ -23,7 +22,7 @@ app.get("/", (req, res) => {
 app.post("/login", auth);
 
 /* ------ Server ------ */
-app.listen(PORT, async () => {
+app.listen(process.env.PORT, async () => {
   try {
     await connection;
     console.log("Connected to DB");
@@ -31,5 +30,5 @@ app.listen(PORT, async () => {
     console.log("Something went wrong while connecting to DB");
     console.log(error);
   }
-  console.log(`Sever running at port ${PORT}`);
+  console.log(`Sever running at port ${process.env.PORT}`);
 });
