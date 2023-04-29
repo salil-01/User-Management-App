@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
 app.post("/login", auth);
 
 /* ------ Server ------ */
-app.listen(process.env.PORT, async () => {
+app.listen(process.env.port, async () => {
   try {
     await connection;
     console.log("Connected to DB");
@@ -30,5 +30,5 @@ app.listen(process.env.PORT, async () => {
     console.log("Something went wrong while connecting to DB");
     console.log(error);
   }
-  console.log(`Sever running at port ${process.env.PORT}`);
+  console.log(`Sever running at port ${process.env.port}`);
 });
