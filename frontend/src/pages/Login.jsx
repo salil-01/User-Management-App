@@ -50,12 +50,13 @@ export const Login = () => {
   const { login } = useContext(AuthContext);
   // console.log(isAdminAuth);
   const toast = useToast();
+  // console.log(`${process.env.REACT_APP_REACT_APP_BACKEND_URL}`);
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log(formData);
     setLoading(true);
     try {
-      let response = await axios.post(`http://localhost:8080/login`, formData);
+      let response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/login`, formData);
       // console.log(response.data.user[].username);
       if (response.data.admin) {
         login("admin", response.data.admin[0].username);

@@ -24,7 +24,7 @@ const arr = [
 ];
 
 const deleteUser = async (id, config) => {
-  return await axios.delete(`http://localhost:8080/user/delete/${id}`, config);
+  return await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/user/delete/${id}`, config);
 };
 export const UserTable = () => {
   const [userData, setUserData] = useState([] || arr);
@@ -46,7 +46,7 @@ export const UserTable = () => {
     setLoading(true);
     deleteUser(id, config)
       .then(() => {
-        getData(`http://localhost:8080/user`);
+        getData(`${process.env.REACT_APP_BACKEND_URL}/user`);
         toast({
           title: "User Deleted",
           position: "top",
@@ -57,7 +57,7 @@ export const UserTable = () => {
         });
       })
       .catch(() => {
-        getData(`http://localhost:8080/user`);
+        getData(`${process.env.REACT_APP_BACKEND_URL}/user`);
         toast({
           title: "Error while Deleting User",
           position: "top",
@@ -88,7 +88,7 @@ export const UserTable = () => {
   /* ------- Get Users ------ */
   useEffect(() => {
     if (userData.length === 0) {
-      getData(`http://localhost:8080/user`);
+      getData(`${process.env.REACT_APP_BACKEND_URL}/user`);
     }
   }, []);
   return (

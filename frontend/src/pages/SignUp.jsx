@@ -105,7 +105,7 @@ export const SignUp = () => {
       if (formData.role === "admin") {
         setLoading(true);
         try {
-          await axios.post(`http://localhost:8080/admin/register`, obj);
+          await axios.post(`${process.env.REACT_APP_BACKEND_URL}/admin/register`, obj);
           // console.log(response);
           setLoading(false);
           toast({
@@ -133,7 +133,7 @@ export const SignUp = () => {
       } else if (formData.role === "explorer") {
         setLoading(true);
         try {
-          await axios.post(`http://localhost:8080/user/register`, obj);
+          await axios.post(`${process.env.REACT_APP_BACKEND_URL}/user/register`, obj);
           // console.log(response);
           setLoading(false);
           toast({
@@ -378,7 +378,7 @@ export const SignUp = () => {
                     variant="outline"
                     border={"1px solid #F06292"}
                     isLoading
-                    loadingText="Logging In"
+                    loadingText="Registering..."
                     size="lg"
                     bg={"#F06292"}
                     color={"white"}

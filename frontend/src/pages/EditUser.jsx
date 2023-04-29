@@ -59,7 +59,11 @@ export const EditUser = () => {
     // console.log(data);
     setEditLoading(true);
     try {
-      await axios.patch(`http://localhost:8080/user/edit/${id}`, data, options);
+      await axios.patch(
+        `${process.env.REACT_APP_BACKEND_URL}/user/edit/${id}`,
+        data,
+        options
+      );
       // console.log(res);
       setEditLoading(false);
       toast({
@@ -86,7 +90,7 @@ export const EditUser = () => {
   const getSingleUser = async (val) => {
     setLoading(true);
     try {
-      let resObj = await axios.get(`http://localhost:8080/user/${val}`);
+      let resObj = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/${val}`);
       // console.log(resObj);
       setData(resObj.data.user);
       setLoading(false);
